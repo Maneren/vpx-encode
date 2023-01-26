@@ -188,7 +188,7 @@ impl Encoder {
         })
     }
 
-    pub fn encode(&mut self, pts: i64, data: &[u8]) -> Result<Packets> {
+    pub fn encode(&mut self, pts: i64, data: &[u8], image_format: vpx_img_fmt) -> Result<Packets> {
         assert!(2 * data.len() >= 3 * self.width * self.height);
 
         let image = MaybeUninit::zeroed();
@@ -196,7 +196,7 @@ impl Encoder {
 
         call_vpx_ptr!(vpx_img_wrap(
             &mut image,
-            vpx_img_fmt::VPX_IMG_FMT_I420,
+            image_format,
             self.width as _,
             self.height as _,
             1,
