@@ -43,6 +43,7 @@ use thiserror::Error;
 #[cfg(feature = "vp9")]
 use vpx_sys::vp8e_enc_control_id::*;
 use vpx_sys::vpx_codec_cx_pkt_kind::VPX_CODEC_CX_FRAME_PKT;
+pub use vpx_sys::vpx_img_fmt;
 use vpx_sys::*;
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
